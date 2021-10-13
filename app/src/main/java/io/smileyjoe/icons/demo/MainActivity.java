@@ -28,6 +28,6 @@ public class MainActivity extends AppCompatActivity {
         View view = mBinding.getRoot();
         setContentView(view);
 
-        mBinding.iconTwo.setImageByName("battery-20");
+        mBinding.iconTwo.setImageByName("floor-lamp-torchiere-variant-outline");
     }
 }

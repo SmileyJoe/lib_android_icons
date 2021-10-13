@@ -9,7 +9,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
-public class IconLoader implements Runnable{
+class IconLoader implements Runnable{
 
     public enum Key{
         ID, NAME

@@ -10,7 +10,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Database {
+class Database {
     private static AppDatabase sAppDatabase;
 
     private Database() {

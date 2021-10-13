@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Dao
-public interface IconDataDao {
+interface IconDataDao {
 
     @Query("SELECT * FROM icondata WHERE id LIKE :id LIMIT 1")
     IconData findById(String id);

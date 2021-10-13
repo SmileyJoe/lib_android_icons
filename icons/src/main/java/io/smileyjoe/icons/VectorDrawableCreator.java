@@ -26,7 +26,7 @@ import java.util.List;
  * Taken from:
  * https://stackoverflow.com/a/49920860
  */
-public class VectorDrawableCreator {
+class VectorDrawableCreator {
 
     private static final byte[][] BIN_XML_STRINGS = {
             "width".getBytes(),

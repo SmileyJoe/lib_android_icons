@@ -4,7 +4,7 @@ import android.app.Application;
 
 import java.util.ArrayList;
 
-import io.smileyjoe.icons.Database;
+import io.smileyjoe.icons.Icon;
 
 public class IconApplication extends Application {
 
@@ -19,6 +19,6 @@ public class IconApplication extends Application {
         preloadNames.add("engine-outline");
         preloadNames.add("eraser");
 
-        Database.setup(getApplicationContext(), preloadNames);
+        Icon.setup(getApplicationContext(), preloadNames);
     }
 }
