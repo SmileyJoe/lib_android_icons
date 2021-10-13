@@ -31,7 +31,7 @@ public class IconTextView extends AppCompatTextView implements IconLoaded {
         init(attrs, defStyleAttr);
     }
 
-    private void init(AttributeSet attrs, int defStyle){
+    private void init(AttributeSet attrs, int defStyle) {
         mHelper = new IconViewHelper(getContext());
         mHelper.setListener(this);
         mHelper.load(attrs, defStyle);

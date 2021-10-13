@@ -13,9 +13,9 @@ import io.smileyjoe.icons.IconData;
 import io.smileyjoe.icons.db.Database;
 import io.smileyjoe.icons.listener.IconLoaded;
 
-public class IconLoader implements Runnable{
+public class IconLoader implements Runnable {
 
-    public enum Key{
+    public enum Key {
         ID, NAME
     }
 
@@ -29,7 +29,7 @@ public class IconLoader implements Runnable{
         mContext = context;
     }
 
-    public static IconLoader with(Context context){
+    public static IconLoader with(Context context) {
         return new IconLoader(context);
     }
 
@@ -48,7 +48,7 @@ public class IconLoader implements Runnable{
         return this;
     }
 
-    public void execute(){
+    public void execute() {
         mMainExecutor = ContextCompat.getMainExecutor(mContext);
         ScheduledExecutorService backgroundExecutor = Executors.newSingleThreadScheduledExecutor();
         backgroundExecutor.execute(this);
@@ -58,7 +58,7 @@ public class IconLoader implements Runnable{
     public void run() {
         IconData data = null;
 
-        switch (mKey){
+        switch (mKey) {
             case ID:
                 data = Database.getIconData().findById(mValue);
                 break;
@@ -67,16 +67,16 @@ public class IconLoader implements Runnable{
                 break;
         }
 
-        if(data != null && !TextUtils.isEmpty(data.getPath())){
+        if (data != null && !TextUtils.isEmpty(data.getPath())) {
             mMainExecutor.execute(new ReturnToUi(data));
-        } else if(data != null && !TextUtils.isEmpty(data.getId())){
+        } else if (data != null && !TextUtils.isEmpty(data.getId())) {
             Api.getIcon(mContext, data.getId(), icon -> mMainExecutor.execute(new ReturnToUi(icon)));
         } else {
             // TODO: Something //
         }
     }
 
-    private class ReturnToUi implements Runnable{
+    private class ReturnToUi implements Runnable {
         private IconData mIconData;
 
         public ReturnToUi(IconData iconData) {

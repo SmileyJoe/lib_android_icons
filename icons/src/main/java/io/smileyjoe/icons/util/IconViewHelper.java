@@ -28,14 +28,14 @@ public class IconViewHelper {
         mListener = listener;
     }
 
-    public void load(AttributeSet attrs, int defStyle){
-        if(attrs != null) {
+    public void load(AttributeSet attrs, int defStyle) {
+        if (attrs != null) {
             TypedArray a = mContext.obtainStyledAttributes(attrs, R.styleable.IconView, defStyle, 0);
 
             mColor = a.getColor(R.styleable.IconView_icon_color, Color.BLACK);
             String iconName = a.getString(R.styleable.IconView_icon_name);
 
-            if(!TextUtils.isEmpty(iconName)){
+            if (!TextUtils.isEmpty(iconName)) {
                 load(IconLoader.Key.NAME, iconName);
             } else {
                 String iconId = a.getString(R.styleable.IconView_icon_id);
@@ -46,8 +46,8 @@ public class IconViewHelper {
         }
     }
 
-    public void load(IconLoader.Key key, String value){
-        if(!TextUtils.isEmpty(value)) {
+    public void load(IconLoader.Key key, String value) {
+        if (!TextUtils.isEmpty(value)) {
             Icon.load(mContext, value, key, mListener);
         }
     }

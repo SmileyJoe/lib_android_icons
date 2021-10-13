@@ -63,11 +63,12 @@ public class VectorDrawableCreator {
 
     /**
      * Create a vector drawable from a list of paths and colors
-     * @param width drawable width
-     * @param height drawable height
-     * @param viewportWidth vector image width
+     *
+     * @param width          drawable width
+     * @param height         drawable height
+     * @param viewportWidth  vector image width
      * @param viewportHeight vector image height
-     * @param paths list of path data and colors
+     * @param paths          list of path data and colors
      * @return the vector drawable or null it couldn't be created.
      */
     public static Drawable getVectorDrawable(@NonNull Context context,

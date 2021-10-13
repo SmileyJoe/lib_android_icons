@@ -19,7 +19,7 @@ public class Database {
     private Database() {
     }
 
-    public static void setup(Context applicationContext, ArrayList<String> preloadNames){
+    public static void setup(Context applicationContext, ArrayList<String> preloadNames) {
         sAppDatabase = Room.databaseBuilder(applicationContext, AppDatabase.class, "icons")
                 .addCallback(new RoomDatabase.Callback() {
                     @Override
@@ -27,7 +27,7 @@ public class Database {
                         Api.getAll(applicationContext, () -> {
                             List<IconData> icons = sAppDatabase.iconDataDao().findByNames(preloadNames);
 
-                            for(IconData icon:icons){
+                            for (IconData icon : icons) {
                                 Api.getIcon(applicationContext, icon.getId(), null);
                             }
                         });
@@ -36,7 +36,7 @@ public class Database {
                 .build();
     }
 
-    public static IconDataDao getIconData(){
+    public static IconDataDao getIconData() {
         return sAppDatabase.iconDataDao();
     }
 }

@@ -14,15 +14,15 @@ import io.smileyjoe.icons.util.VectorDrawableCreator;
 
 public class Icon {
 
-    public static void setup(Context applicationContext, ArrayList<String> preloadNames){
+    public static void setup(Context applicationContext, ArrayList<String> preloadNames) {
         Database.setup(applicationContext, preloadNames);
     }
 
-    public static void load(Context context, String name, IconLoader.Key key, IconLoaded listener){
+    public static void load(Context context, String name, IconLoader.Key key, IconLoaded listener) {
         IconLoader.with(context).value(name).key(key).listener(listener).execute();
     }
 
-    public static Drawable fromPath(Context context, String path, int color){
+    public static Drawable fromPath(Context context, String path, int color) {
         List<VectorDrawableCreator.PathData> pathList = Arrays.asList(
                 new VectorDrawableCreator.PathData(path, color));
 

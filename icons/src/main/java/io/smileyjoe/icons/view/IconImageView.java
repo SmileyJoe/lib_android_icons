@@ -31,13 +31,13 @@ public class IconImageView extends AppCompatImageView implements IconLoaded {
         init(attrs, defStyleAttr);
     }
 
-    private void init(AttributeSet attrs, int defStyle){
+    private void init(AttributeSet attrs, int defStyle) {
         mHelper = new IconViewHelper(getContext());
         mHelper.setListener(this);
         mHelper.load(attrs, defStyle);
     }
 
-    public void setImageByName(String name){
+    public void setImageByName(String name) {
         mHelper.load(IconLoader.Key.NAME, name);
     }
 
