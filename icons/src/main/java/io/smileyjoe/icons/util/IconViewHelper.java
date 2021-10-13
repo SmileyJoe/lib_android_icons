@@ -42,10 +42,7 @@ public class IconViewHelper {
             String iconName = a.getString(R.styleable.IconView_icon_name);
 
             if (!TextUtils.isEmpty(iconName)) {
-                load(IconLoader.Key.NAME, iconName);
-            } else {
-                String iconId = a.getString(R.styleable.IconView_icon_id);
-                load(IconLoader.Key.ID, iconId);
+                load(iconName);
             }
 
             int placeholderResId = a.getResourceId(R.styleable.IconView_placeholder, 0);
@@ -72,9 +69,9 @@ public class IconViewHelper {
         }
     }
 
-    public void load(IconLoader.Key key, String value) {
+    public void load(String value) {
         if (!TextUtils.isEmpty(value)) {
-            Icon.load(mContext, value, key, mListener);
+            Icon.load(mContext, value, mListener);
         }
     }
 }

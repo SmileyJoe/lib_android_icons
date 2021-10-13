@@ -15,15 +15,10 @@ import io.smileyjoe.icons.listener.IconLoaded;
 
 public class IconLoader implements Runnable {
 
-    public enum Key {
-        ID, NAME
-    }
-
     private String mValue;
     private Executor mMainExecutor;
     private IconLoaded mListener;
     private Context mContext;
-    private Key mKey;
 
     private IconLoader(Context context) {
         mContext = context;
@@ -31,11 +26,6 @@ public class IconLoader implements Runnable {
 
     public static IconLoader with(Context context) {
         return new IconLoader(context);
-    }
-
-    public IconLoader key(Key key) {
-        mKey = key;
-        return this;
     }
 
     public IconLoader value(String value) {
@@ -56,16 +46,7 @@ public class IconLoader implements Runnable {
 
     @Override
     public void run() {
-        IconData data = null;
-
-        switch (mKey) {
-            case ID:
-                data = Database.getIconData().findById(mValue);
-                break;
-            case NAME:
-                data = Database.getIconData().findByName(mValue);
-                break;
-        }
+        IconData data = Database.getIconData().findByName(mValue);
 
         if (data != null && !TextUtils.isEmpty(data.getPath())) {
             mMainExecutor.execute(new ReturnToUi(data));

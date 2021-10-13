@@ -58,7 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TESTING"
-        app:icon_id="9CF96408-1A24-4040-AD04-011183CC9ABC"
+        app:icon_name="forward"
         app:icon_color="@color/colorPrimary"
         app:placeholder="@drawable/anim_loading"/>
 

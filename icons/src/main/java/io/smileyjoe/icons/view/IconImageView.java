@@ -44,8 +44,8 @@ public class IconImageView extends AppCompatImageView implements IconViewListene
         mHelper.load(attrs, defStyle);
     }
 
-    public void setImageByName(String name) {
-        mHelper.load(IconLoader.Key.NAME, name);
+    public void setIcon(String name) {
+        mHelper.load(name);
     }
 
     @Override

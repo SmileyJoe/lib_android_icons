@@ -20,12 +20,12 @@ public class Icon {
         Database.setup(applicationContext, preloadNames, listener);
     }
 
-    public static void load(Context context, String name, IconLoader.Key key, IconLoaded listener) {
-        IconLoader.with(context).value(name).key(key).listener(listener).execute();
+    public static void load(Context context, String name, IconLoaded listener) {
+        IconLoader.with(context).value(name).listener(listener).execute();
     }
 
-    public static void load(Context context, String name, IconLoader.Key key, DrawableLoaded listener){
-        load(context, name, key, (icon) -> {
+    public static void load(Context context, String name, DrawableLoaded listener){
+        load(context, name, (icon) -> {
             listener.setIcon(context, icon);
         });
     }

@@ -23,13 +23,13 @@ public class MainActivity extends AppCompatActivity {
         View view = mBinding.getRoot();
         setContentView(view);
 
-        mBinding.iconTwo.setImageByName("format-text-rotation-up");
+        mBinding.iconTwo.setIcon("format-text-rotation-up");
 
-        Icon.load(getBaseContext(), "freebsd", IconLoader.Key.NAME, (icon) -> {
+        Icon.load(getBaseContext(), "freebsd", (icon) -> {
             mBinding.imageIcon.setImageDrawable(Icon.fromPath(getBaseContext(), icon.getPath(), Color.BLUE));
         });
 
-        Icon.load(getBaseContext(), "forum", IconLoader.Key.NAME, new DrawableLoaded(Color.GREEN) {
+        Icon.load(getBaseContext(), "forum", new DrawableLoaded(Color.GREEN) {
             @Override
             public void onDrawableLoaded(Drawable drawable) {
                 mBinding.imageIconThree.setImageDrawable(drawable);
