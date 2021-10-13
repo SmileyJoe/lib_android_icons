@@ -35,5 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 mBinding.imageIconThree.setImageDrawable(drawable);
             }
         });
+
+        Icon.load(getBaseContext(), "fridge", "format-size", "golf", "ghost");
     }
 }

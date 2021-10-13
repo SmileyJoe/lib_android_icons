@@ -21,13 +21,21 @@ public class Icon {
     }
 
     public static void load(Context context, String name, IconLoaded listener) {
-        IconLoader.with(context).value(name).listener(listener).execute();
+        IconLoader.with(context).name(name).listener(listener).execute();
     }
 
     public static void load(Context context, String name, DrawableLoaded listener){
         load(context, name, (icon) -> {
             listener.setIcon(context, icon);
         });
+    }
+
+    public static void load(Context context, String... names){
+        load(context, new ArrayList<>(Arrays.asList(names)));
+    }
+
+    public static void load(Context context, ArrayList<String> names){
+        IconLoader.with(context).names(names).execute();
     }
 
     public static Drawable fromPath(Context context, String path, int color) {

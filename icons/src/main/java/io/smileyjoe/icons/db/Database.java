@@ -40,6 +40,7 @@ public class Database {
         private Context mApplicationContext;
         private ArrayList<String> mPreloadNames;
         private SetupListener mListener;
+        private boolean mSetupRunning = false;
 
         public RoomCallback(Context applicationContext, ArrayList<String> preloadNames, SetupListener listener){
             mApplicationContext = applicationContext;
@@ -60,21 +61,24 @@ public class Database {
         }
 
         private void setup(SupportSQLiteDatabase db){
-            Api.getAll(mApplicationContext, () -> {
-                if(getRowCount(db) > 0) {
-                    List<IconData> icons = sAppDatabase.iconDataDao().findByNames(mPreloadNames);
+            if(!mSetupRunning) {
+                mSetupRunning = true;
+                Api.getAll(mApplicationContext, () -> {
+                    if (getRowCount(db) > 0) {
+                        List<IconData> icons = sAppDatabase.iconDataDao().findByNames(mPreloadNames);
 
-                    for (IconData icon : icons) {
-                        Api.getIcon(mApplicationContext, icon.getId(), null);
-                    }
+                        for (IconData icon : icons) {
+                            Api.getIcon(mApplicationContext, icon.getId(), null);
+                        }
 
-                    if(mListener != null){
-                        mListener.setupComplete();
+                        if (mListener != null) {
+                            mListener.setupComplete();
+                        }
+                    } else if (mListener != null) {
+                        mListener.setupFailed();
                     }
-                } else if(mListener != null){
-                    mListener.setupFailed();
-                }
-            });
+                });
+            }
         }
 
         private long getRowCount(@NonNull SupportSQLiteDatabase db){

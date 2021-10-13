@@ -58,8 +58,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TESTING"
-        app:icon_name="forward"
+        app:icon_name="eraser"
         app:icon_color="@color/colorPrimary"
+        app:placeholder="@drawable/anim_loading"/>
+
+    <io.smileyjoe.icons.view.IconTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TESTING PART TWO"
+        app:icon_name="ghost"
+        app:icon_color="@color/colorAccent"
         app:placeholder="@drawable/anim_loading"/>
 
 </LinearLayout>
