@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!" />
+
+    <ImageView
+        android:id="@+id/image_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
+    <io.smileyjoe.icons.IconImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:icon_name="emoticon-dead-outline"
+        app:icon_color="@color/colorPrimary"/>
+
+    <io.smileyjoe.icons.IconImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:icon_name="file-plus-outline"
+        app:icon_color="@color/colorPrimary"/>
+
+    <io.smileyjoe.icons.IconImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:icon_name="emoticon-poop"
+        app:icon_color="@color/colorPrimary"/>
+
+    <io.smileyjoe.icons.IconImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:icon_name="file-account"
+        app:icon_color="@color/colorAccent"/>
+
+    <io.smileyjoe.icons.IconImageView
+        android:id="@+id/icon_two"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:icon_color="@color/colorPrimary"/>
+
+    <io.smileyjoe.icons.IconTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TESTING"
+        app:icon_id="9CF96408-1A24-4040-AD04-011183CC9ABC"
+        app:icon_color="@color/colorPrimary"/>
+
+</LinearLayout>
