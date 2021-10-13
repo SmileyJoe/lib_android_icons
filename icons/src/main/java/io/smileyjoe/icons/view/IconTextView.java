@@ -1,4 +1,4 @@
-package io.smileyjoe.icons;
+package io.smileyjoe.icons.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -7,7 +7,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 
-public class IconTextView extends AppCompatTextView implements IconLoaded{
+import io.smileyjoe.icons.Icon;
+import io.smileyjoe.icons.IconData;
+import io.smileyjoe.icons.listener.IconLoaded;
+import io.smileyjoe.icons.util.IconViewHelper;
+
+public class IconTextView extends AppCompatTextView implements IconLoaded {
 
     private IconViewHelper mHelper;
 

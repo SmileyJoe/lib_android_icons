@@ -1,4 +1,4 @@
-package io.smileyjoe.icons;
+package io.smileyjoe.icons.util;
 
 import android.content.Context;
 import android.util.Log;
@@ -8,7 +8,12 @@ import com.koushikdutta.ion.Ion;
 
 import java.util.List;
 
-class Api {
+import io.smileyjoe.icons.IconData;
+import io.smileyjoe.icons.db.Database;
+import io.smileyjoe.icons.listener.IconLoaded;
+import io.smileyjoe.icons.listener.MetaLoaded;
+
+public class Api {
 
     private static final String URL_ALL = "https://cdn.jsdelivr.net/npm/@mdi/svg@6.2.95/meta.json";
     private static final String URL_ICON = "https://materialdesignicons.com/api/icon/{id}";

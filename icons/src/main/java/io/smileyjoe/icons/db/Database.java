@@ -1,4 +1,4 @@
-package io.smileyjoe.icons;
+package io.smileyjoe.icons.db;
 
 import android.content.Context;
 
@@ -10,7 +10,10 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-class Database {
+import io.smileyjoe.icons.IconData;
+import io.smileyjoe.icons.util.Api;
+
+public class Database {
     private static AppDatabase sAppDatabase;
 
     private Database() {

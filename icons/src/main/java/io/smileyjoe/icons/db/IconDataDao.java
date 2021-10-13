@@ -1,4 +1,4 @@
-package io.smileyjoe.icons;
+package io.smileyjoe.icons.db;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
@@ -8,8 +8,10 @@ import androidx.room.Query;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.smileyjoe.icons.IconData;
+
 @Dao
-interface IconDataDao {
+public interface IconDataDao {
 
     @Query("SELECT * FROM icondata WHERE id LIKE :id LIMIT 1")
     IconData findById(String id);

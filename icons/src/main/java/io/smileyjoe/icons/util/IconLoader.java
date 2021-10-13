@@ -1,4 +1,4 @@
-package io.smileyjoe.icons;
+package io.smileyjoe.icons.util;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -9,7 +9,11 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
-class IconLoader implements Runnable{
+import io.smileyjoe.icons.IconData;
+import io.smileyjoe.icons.db.Database;
+import io.smileyjoe.icons.listener.IconLoaded;
+
+public class IconLoader implements Runnable{
 
     public enum Key{
         ID, NAME

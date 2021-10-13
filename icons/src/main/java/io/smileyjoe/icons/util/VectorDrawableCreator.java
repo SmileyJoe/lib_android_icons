@@ -1,4 +1,4 @@
-package io.smileyjoe.icons;
+package io.smileyjoe.icons.util;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -26,7 +26,7 @@ import java.util.List;
  * Taken from:
  * https://stackoverflow.com/a/49920860
  */
-class VectorDrawableCreator {
+public class VectorDrawableCreator {
 
     private static final byte[][] BIN_XML_STRINGS = {
             "width".getBytes(),

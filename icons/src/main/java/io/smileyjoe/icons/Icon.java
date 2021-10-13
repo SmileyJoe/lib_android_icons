@@ -7,6 +7,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import io.smileyjoe.icons.db.Database;
+import io.smileyjoe.icons.listener.IconLoaded;
+import io.smileyjoe.icons.util.IconLoader;
+import io.smileyjoe.icons.util.VectorDrawableCreator;
+
 public class Icon {
 
     public static void setup(Context applicationContext, ArrayList<String> preloadNames){
