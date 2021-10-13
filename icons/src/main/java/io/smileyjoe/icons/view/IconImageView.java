@@ -39,7 +39,7 @@ public class IconImageView extends AppCompatImageView implements IconViewListene
     }
 
     private void init(AttributeSet attrs, int defStyle) {
-        mHelper = new IconViewHelper(getContext());
+        mHelper = new IconViewHelper(this);
         mHelper.setListener(this);
         mHelper.load(attrs, defStyle);
     }

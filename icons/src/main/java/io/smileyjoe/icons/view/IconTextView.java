@@ -34,7 +34,7 @@ public class IconTextView extends AppCompatTextView implements IconViewListener 
     }
 
     private void init(AttributeSet attrs, int defStyle) {
-        mHelper = new IconViewHelper(getContext());
+        mHelper = new IconViewHelper(this);
         mHelper.setListener(this);
         mHelper.load(attrs, defStyle);
     }
