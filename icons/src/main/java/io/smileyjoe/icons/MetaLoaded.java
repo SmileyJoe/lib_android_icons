@@ -1,4 +1,4 @@
-package io.smileyjoe.icons.demo;
+package io.smileyjoe.icons;
 
 public interface MetaLoaded {
     void onMetaLoaded();

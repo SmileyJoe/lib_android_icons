@@ -1,4 +1,4 @@
-package io.smileyjoe.icons.demo;
+package io.smileyjoe.icons;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;

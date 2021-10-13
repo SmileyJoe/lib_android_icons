@@ -1,27 +1,26 @@
-package io.smileyjoe.icons.demo;
+package io.smileyjoe.icons;
 
 import android.content.Context;
 import android.util.AttributeSet;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.AppCompatImageView;
 
-public class IconTextView extends AppCompatTextView implements IconLoaded{
+public class IconImageView extends AppCompatImageView implements IconLoaded{
 
     private IconViewHelper mHelper;
 
-    public IconTextView(@NonNull Context context) {
+    public IconImageView(Context context) {
         super(context);
         init(null, 0);
     }
 
-    public IconTextView(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public IconImageView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(attrs, 0);
     }
 
-    public IconTextView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public IconImageView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs, defStyleAttr);
     }
@@ -32,8 +31,12 @@ public class IconTextView extends AppCompatTextView implements IconLoaded{
         mHelper.load(attrs, defStyle);
     }
 
+    public void setImageByName(String name){
+        mHelper.load(IconLoader.Key.NAME, name);
+    }
+
     @Override
     public void onIconLoaded(IconData icon) {
-        setCompoundDrawablesWithIntrinsicBounds(Icon.fromPath(getContext(), icon.getPath(), mHelper.getColor()), null, null, null);
+        setImageDrawable(Icon.fromPath(getContext(), icon.getPath(), mHelper.getColor()));
     }
 }

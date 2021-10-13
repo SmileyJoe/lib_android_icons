@@ -1,12 +1,10 @@
-package io.smileyjoe.icons.demo;
+package io.smileyjoe.icons;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-
-import io.smileyjoe.icons.demo.R;
 
 public class IconViewHelper {
 

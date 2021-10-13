@@ -1,4 +1,4 @@
-package io.smileyjoe.icons.demo;
+package io.smileyjoe.icons;
 
 import androidx.room.Dao;
 import androidx.room.Insert;

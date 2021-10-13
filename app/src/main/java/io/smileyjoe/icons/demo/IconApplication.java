@@ -4,6 +4,8 @@ import android.app.Application;
 
 import java.util.ArrayList;
 
+import io.smileyjoe.icons.Database;
+
 public class IconApplication extends Application {
 
     @Override
