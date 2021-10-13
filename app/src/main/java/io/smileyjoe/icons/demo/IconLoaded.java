@@ -1,4 +1,4 @@
-package io.smileyjoe.icons;
+package io.smileyjoe.icons.demo;
 
 public interface IconLoaded {
 

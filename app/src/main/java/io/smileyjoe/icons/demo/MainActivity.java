@@ -1,4 +1,4 @@
-package io.smileyjoe.icons;
+package io.smileyjoe.icons.demo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,7 +15,7 @@ import android.view.View;
 import java.util.Arrays;
 import java.util.List;
 
-import io.smileyjoe.icons.databinding.ActivityMainBinding;
+import io.smileyjoe.icons.demo.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 

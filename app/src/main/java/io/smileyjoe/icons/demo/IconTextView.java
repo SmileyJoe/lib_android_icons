@@ -1,8 +1,6 @@
-package io.smileyjoe.icons;
+package io.smileyjoe.icons.demo;
 
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.util.AttributeSet;
 
 import androidx.annotation.NonNull;

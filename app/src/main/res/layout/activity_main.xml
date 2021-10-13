@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".demo.MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -17,37 +17,37 @@
         android:layout_width="50dp"
         android:layout_height="50dp"/>
 
-    <io.smileyjoe.icons.IconImageView
+    <io.smileyjoe.icons.demo.IconImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:icon_name="emoticon-dead-outline"
         app:icon_color="@color/colorPrimary"/>
 
-    <io.smileyjoe.icons.IconImageView
+    <io.smileyjoe.icons.demo.IconImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:icon_name="file-plus-outline"
         app:icon_color="@color/colorPrimary"/>
 
-    <io.smileyjoe.icons.IconImageView
+    <io.smileyjoe.icons.demo.IconImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:icon_name="emoticon-poop"
         app:icon_color="@color/colorPrimary"/>
 
-    <io.smileyjoe.icons.IconImageView
+    <io.smileyjoe.icons.demo.IconImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
         app:icon_name="file-account"
         app:icon_color="@color/colorAccent"/>
 
-    <io.smileyjoe.icons.IconImageView
+    <io.smileyjoe.icons.demo.IconImageView
         android:id="@+id/icon_two"
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:icon_color="@color/colorPrimary"/>
 
-    <io.smileyjoe.icons.IconTextView
+    <io.smileyjoe.icons.demo.IconTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TESTING"
