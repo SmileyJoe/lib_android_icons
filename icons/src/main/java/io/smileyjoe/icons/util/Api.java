@@ -25,10 +25,13 @@ public class Api {
                 .as(new TypeToken<List<IconData>>() {
                 })
                 .setCallback((exception, icons) -> {
-                    Log.d("IconThings", "Icons: " + icons.size());
-                    Database.getIconData().insertAll(icons);
+                    if(icons != null && icons.size() > 0) {
+                        Database.getIconData().insertAll(icons);
+                    }
 
-                    listener.onMetaLoaded();
+                    if (listener != null) {
+                        listener.onMetaLoaded();
+                    }
                 });
     }
 
@@ -39,7 +42,9 @@ public class Api {
                 .as(new TypeToken<IconData>() {
                 })
                 .setCallback((exception, icon) -> {
-                    Database.getIconData().insert(icon);
+                    if(icon != null) {
+                        Database.getIconData().insert(icon);
+                    }
 
                     if (listener != null) {
                         listener.onIconLoaded(icon);

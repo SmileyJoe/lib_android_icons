@@ -18,6 +18,6 @@ public class MainActivity extends AppCompatActivity {
         View view = mBinding.getRoot();
         setContentView(view);
 
-        mBinding.iconTwo.setImageByName("floor-lamp-torchiere-variant-outline");
+        mBinding.iconTwo.setImageByName("format-text-rotation-up");
     }
 }

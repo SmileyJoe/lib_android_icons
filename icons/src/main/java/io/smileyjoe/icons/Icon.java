@@ -9,13 +9,14 @@ import java.util.List;
 
 import io.smileyjoe.icons.db.Database;
 import io.smileyjoe.icons.listener.IconLoaded;
+import io.smileyjoe.icons.listener.SetupListener;
 import io.smileyjoe.icons.util.IconLoader;
 import io.smileyjoe.icons.util.VectorDrawableCreator;
 
 public class Icon {
 
-    public static void setup(Context applicationContext, ArrayList<String> preloadNames) {
-        Database.setup(applicationContext, preloadNames);
+    public static void setup(Context applicationContext, ArrayList<String> preloadNames, SetupListener listener) {
+        Database.setup(applicationContext, preloadNames, listener);
     }
 
     public static void load(Context context, String name, IconLoader.Key key, IconLoaded listener) {
