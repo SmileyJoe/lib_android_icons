@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import io.smileyjoe.icons.db.Database;
+import io.smileyjoe.icons.listener.DrawableLoaded;
 import io.smileyjoe.icons.listener.IconLoaded;
 import io.smileyjoe.icons.listener.SetupListener;
 import io.smileyjoe.icons.util.IconLoader;
@@ -21,6 +22,12 @@ public class Icon {
 
     public static void load(Context context, String name, IconLoader.Key key, IconLoaded listener) {
         IconLoader.with(context).value(name).key(key).listener(listener).execute();
+    }
+
+    public static void load(Context context, String name, IconLoader.Key key, DrawableLoaded listener){
+        load(context, name, key, (icon) -> {
+            listener.setIcon(context, icon);
+        });
     }
 
     public static Drawable fromPath(Context context, String path, int color) {

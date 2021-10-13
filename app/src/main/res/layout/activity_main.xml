@@ -17,6 +17,11 @@
         android:layout_width="50dp"
         android:layout_height="50dp"/>
 
+    <ImageView
+        android:id="@+id/image_icon_three"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
     <io.smileyjoe.icons.view.IconImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
