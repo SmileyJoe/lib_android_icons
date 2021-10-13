@@ -21,7 +21,8 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:icon_name="emoticon-dead-outline"
-        app:icon_color="@color/colorPrimary"/>
+        app:icon_color="@color/colorPrimary"
+        app:placeholder="@drawable/anim_loading"/>
 
     <io.smileyjoe.icons.view.IconImageView
         android:layout_width="50dp"
@@ -38,8 +39,9 @@
     <io.smileyjoe.icons.view.IconImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
-        app:icon_name="file-account"
-        app:icon_color="@color/colorAccent"/>
+        app:icon_name="forward"
+        app:icon_color="@color/colorAccent"
+        app:placeholder="@drawable/anim_loading"/>
 
     <io.smileyjoe.icons.view.IconImageView
         android:id="@+id/icon_two"
@@ -52,6 +54,7 @@
         android:layout_height="wrap_content"
         android:text="TESTING"
         app:icon_id="9CF96408-1A24-4040-AD04-011183CC9ABC"
-        app:icon_color="@color/colorPrimary"/>
+        app:icon_color="@color/colorPrimary"
+        app:placeholder="@drawable/anim_loading"/>
 
 </LinearLayout>

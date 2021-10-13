@@ -4,5 +4,6 @@
         <attr name="icon_id" format="string" />
         <attr name="icon_name" format="string" />
         <attr name="icon_color" format="reference"/>
+        <attr name="placeholder" format="reference"/>
     </declare-styleable>
 </resources>

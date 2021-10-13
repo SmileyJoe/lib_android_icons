@@ -6,13 +6,15 @@ import android.util.AttributeSet;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 
 import io.smileyjoe.icons.Icon;
 import io.smileyjoe.icons.IconData;
 import io.smileyjoe.icons.listener.IconLoaded;
+import io.smileyjoe.icons.listener.IconViewListener;
 import io.smileyjoe.icons.util.IconViewHelper;
 
-public class IconTextView extends AppCompatTextView implements IconLoaded {
+public class IconTextView extends AppCompatTextView implements IconViewListener {
 
     private IconViewHelper mHelper;
 
@@ -40,5 +42,10 @@ public class IconTextView extends AppCompatTextView implements IconLoaded {
     @Override
     public void onIconLoaded(IconData icon) {
         setCompoundDrawablesWithIntrinsicBounds(Icon.fromPath(getContext(), icon.getPath(), mHelper.getColor()), null, null, null);
+    }
+
+    @Override
+    public void showPlaceholder(AnimatedVectorDrawableCompat placeholder) {
+        setCompoundDrawablesWithIntrinsicBounds(placeholder, null, null, null);
     }
 }
