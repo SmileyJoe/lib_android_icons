@@ -28,4 +28,7 @@ public interface IconDataDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(IconData icon);
 
+    @Query("SELECT COUNT(*) FROM icondata")
+    long getRowCount();
+
 }

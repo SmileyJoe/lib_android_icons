@@ -2,6 +2,7 @@ package io.smileyjoe.icons;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +22,7 @@ public class Icon {
     }
 
     public static void load(Context context, String name, IconLoaded listener) {
-        IconLoader.with(context).name(name).listener(listener).execute();
+        IconLoader.with(context).name(name).listener(listener).load();
     }
 
     public static void load(Context context, String name, DrawableLoaded listener){
@@ -35,7 +36,7 @@ public class Icon {
     }
 
     public static void load(Context context, ArrayList<String> names){
-        IconLoader.with(context).names(names).execute();
+        IconLoader.with(context).names(names).load();
     }
 
     public static Drawable fromPath(Context context, String path, int color) {

@@ -12,6 +12,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
+import io.smileyjoe.icons.Icon;
 import io.smileyjoe.icons.IconData;
 import io.smileyjoe.icons.db.Database;
 import io.smileyjoe.icons.listener.IconLoaded;
@@ -49,12 +50,9 @@ public class IconLoader implements Runnable {
         return this;
     }
 
-    public void execute() {
-        if(mListener != null) {
-            mMainExecutor = ContextCompat.getMainExecutor(mContext);
-            ScheduledExecutorService backgroundExecutor = Executors.newSingleThreadScheduledExecutor();
-            backgroundExecutor.execute(this);
-        }
+    public void load() {
+        mMainExecutor = ContextCompat.getMainExecutor(mContext);
+        Scheduler.getInstance().schedule(this);
     }
 
     @Override

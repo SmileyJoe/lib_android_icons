@@ -44,7 +44,7 @@
     <io.smileyjoe.icons.view.IconImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
-        app:icon_name="forward"
+        app:icon_name="seat"
         app:icon_color="@color/colorAccent"
         app:placeholder="@drawable/anim_loading"/>
 
