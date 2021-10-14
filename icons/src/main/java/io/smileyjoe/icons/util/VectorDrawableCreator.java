@@ -17,6 +17,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -302,7 +303,7 @@ public class VectorDrawableCreator {
         }
 
         public PathData(String data, int color) {
-            this(data.getBytes(StandardCharsets.UTF_8), color);
+            this(data.getBytes(Charset.forName("UTF-8")), color);
         }
 
     }
