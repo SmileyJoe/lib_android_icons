@@ -7,6 +7,12 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/button_second"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Second Activity"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,11 +20,6 @@
 
     <ImageView
         android:id="@+id/image_icon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"/>
-
-    <ImageView
-        android:id="@+id/image_icon_three"
         android:layout_width="50dp"
         android:layout_height="50dp"/>
 
@@ -40,6 +41,13 @@
         android:layout_height="50dp"
         app:icon_name="emoticon-poop"
         app:icon_color="@color/colorPrimary"/>
+
+    <io.smileyjoe.icons.view.IconImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:icon_name="seat"
+        app:icon_color="@color/colorAccent"
+        app:placeholder="@drawable/anim_loading"/>
 
     <io.smileyjoe.icons.view.IconImageView
         android:layout_width="150dp"

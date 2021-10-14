@@ -9,8 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import io.smileyjoe.icons.Icon;
 import io.smileyjoe.icons.demo.databinding.ActivityMainBinding;
-import io.smileyjoe.icons.listener.DrawableLoaded;
-import io.smileyjoe.icons.util.IconLoader;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,21 +18,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = ActivityMainBinding.inflate(getLayoutInflater());
-        View view = mBinding.getRoot();
-        setContentView(view);
+        View root = mBinding.getRoot();
+        setContentView(root);
 
+        mBinding.buttonSecond.setOnClickListener((view) -> startActivity(SecondActivity.getIntent(getBaseContext())));
         mBinding.iconTwo.setIcon("format-text-rotation-up");
 
-        Icon.load(getBaseContext(), "freebsd", (icon) -> {
-            mBinding.imageIcon.setImageDrawable(Icon.fromPath(getBaseContext(), icon.getPath(), Color.BLUE));
-        });
-
-        Icon.load(getBaseContext(), "forum", new DrawableLoaded(Color.GREEN) {
-            @Override
-            public void onDrawableLoaded(Drawable drawable) {
-                mBinding.imageIconThree.setImageDrawable(drawable);
-            }
-        });
+        Icon.load(getBaseContext(), "freebsd", (icon) -> mBinding.imageIcon.setImageDrawable(Icon.tint(icon, Color.BLUE)));
 
         Icon.load(getBaseContext(), "fridge", "format-size", "golf", "ghost");
     }

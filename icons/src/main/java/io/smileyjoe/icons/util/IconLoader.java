@@ -1,6 +1,7 @@
 package io.smileyjoe.icons.util;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -51,8 +52,24 @@ public class IconLoader implements Runnable {
     }
 
     public void load() {
-        mMainExecutor = ContextCompat.getMainExecutor(mContext);
-        Scheduler.getInstance().schedule(this);
+        ArrayList<String> namesToLoad = new ArrayList<>();
+        IconCache cache = IconCache.getInstance();
+
+        for(String name:mNames){
+            Drawable drawable = cache.get(name);
+
+            if(drawable != null && mListener != null){
+                mListener.onIconLoaded(drawable);
+            } else {
+                namesToLoad.add(name);
+            }
+        }
+
+        if(!namesToLoad.isEmpty()) {
+            mNames = namesToLoad;
+            mMainExecutor = ContextCompat.getMainExecutor(mContext);
+            Scheduler.getInstance().schedule(this);
+        }
     }
 
     @Override
@@ -62,7 +79,7 @@ public class IconLoader implements Runnable {
         for(IconData data: icons) {
             if(mMainExecutor != null) {
                 if (data != null && !TextUtils.isEmpty(data.getPath())) {
-                    mMainExecutor.execute(new ReturnToUi(data));
+                    mMainExecutor.execute(new ReturnToUi(Icon.fromPath(mContext, data)));
                 } else if (data != null && !TextUtils.isEmpty(data.getId())) {
                     Api.getIcon(mContext, data.getId(), icon -> mMainExecutor.execute(new ReturnToUi(icon)));
                 } else {
@@ -75,16 +92,16 @@ public class IconLoader implements Runnable {
     }
 
     private class ReturnToUi implements Runnable {
-        private IconData mIconData;
+        private Drawable mDrawable;
 
-        public ReturnToUi(IconData iconData) {
-            mIconData = iconData;
+        public ReturnToUi(Drawable drawable) {
+            mDrawable = drawable;
         }
 
         @Override
         public void run() {
             if(mListener != null) {
-                mListener.onIconLoaded(mIconData);
+                mListener.onIconLoaded(mDrawable);
             }
         }
     }

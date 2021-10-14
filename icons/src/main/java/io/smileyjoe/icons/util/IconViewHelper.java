@@ -38,15 +38,16 @@ public class IconViewHelper {
             TypedArray a = mView.getContext().obtainStyledAttributes(attrs, R.styleable.IconView, defStyle, 0);
 
             mColor = a.getColor(R.styleable.IconView_icon_color, Color.BLACK);
-            String iconName = a.getString(R.styleable.IconView_icon_name);
-
-            if (!TextUtils.isEmpty(iconName)) {
-                load(iconName);
-            }
 
             int placeholderResId = a.getResourceId(R.styleable.IconView_placeholder, 0);
             if(placeholderResId != 0){
                 handlePlaceholder(placeholderResId);
+            }
+
+            String iconName = a.getString(R.styleable.IconView_icon_name);
+
+            if (!TextUtils.isEmpty(iconName)) {
+                load(iconName);
             }
 
             a.recycle();
@@ -55,18 +56,28 @@ public class IconViewHelper {
 
     private void handlePlaceholder(int resId){
         if(mListener != null) {
-            AnimatedVectorDrawableCompat animatedDrawable = AnimatedVectorDrawableCompat.create(mView.getContext(), resId);
-            animatedDrawable.setTint(mColor);
-            mListener.showPlaceholder(animatedDrawable);
-            animatedDrawable.registerAnimationCallback(new Animatable2Compat.AnimationCallback() {
+            IconCache cache = IconCache.getInstance();
+            AnimatedVectorDrawableCompat animatedDrawable = (AnimatedVectorDrawableCompat) cache.get(resId);
+            AnimatedVectorDrawableCompat placeholder;
+
+            if(animatedDrawable != null) {
+                placeholder = animatedDrawable;
+                placeholder.clearAnimationCallbacks();
+            } else {
+                placeholder = AnimatedVectorDrawableCompat.create(mView.getContext(), resId);
+            }
+
+            placeholder.registerAnimationCallback(new Animatable2Compat.AnimationCallback() {
                 @Override
                 public void onAnimationEnd(Drawable drawable) {
                     mView.post(() -> {
-                        animatedDrawable.start();
+                        placeholder.start();
                     });
                 }
             });
-            animatedDrawable.start();
+            placeholder.start();
+            IconCache.getInstance().cache(resId, placeholder);
+            mListener.showPlaceholder(placeholder);
         }
     }
 

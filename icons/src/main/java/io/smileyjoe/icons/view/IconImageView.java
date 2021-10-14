@@ -49,8 +49,8 @@ public class IconImageView extends AppCompatImageView implements IconViewListene
     }
 
     @Override
-    public void onIconLoaded(IconData icon) {
-        setImageDrawable(Icon.fromPath(getContext(), icon.getPath(), mHelper.getColor()));
+    public void onIconLoaded(Drawable icon) {
+        setImageDrawable(Icon.tint(icon, mHelper.getColor(), true));
     }
 
     @Override

@@ -8,6 +8,7 @@ import com.koushikdutta.ion.Ion;
 
 import java.util.List;
 
+import io.smileyjoe.icons.Icon;
 import io.smileyjoe.icons.IconData;
 import io.smileyjoe.icons.db.Database;
 import io.smileyjoe.icons.listener.IconLoaded;
@@ -47,7 +48,7 @@ public class Api {
                     }
 
                     if (listener != null) {
-                        listener.onIconLoaded(icon);
+                        listener.onIconLoaded(Icon.fromPath(context, icon));
                     }
                 });
     }
