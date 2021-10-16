@@ -15,6 +15,31 @@ Package to load in icons from [MaterialDesignIcons](https://materialdesignicons.
 - Helper class for using custom attributes in custom views
 - Preload icons into the db
 
+## Implementation ##
+
+- Add the repo to the project `build.gradle`
+  - `{github_user}`, your github username
+  - `{github_token}`, a personal access token that has read packages permissions
+  - More info on auth here](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-gradle-registry#authenticating-to-github-packages)
+```groovy
+allprojects {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/SmileyJoe/lib_android_icons")
+            credentials {
+                username = {github_user}
+                password = {github_token}
+            }
+        }
+    }
+}
+```
+- Add the dependendy to app module `build.gradle`
+```groovy
+implementation 'io.smileyjoe:icons:{latest_version}'
+```
+
 ## Setup ##
 
 - Add the setup to the application classes `onCreate()`
