@@ -15,7 +15,7 @@ Package to load in icons from [MaterialDesignIcons](https://materialdesignicons.
 - Helper class for using custom attributes in custom views
 - Preload icons into the db
 
-## Useage ##
+## Setup ##
 
 - Add the setup to the application classes `onCreate()`
 ```java
@@ -23,6 +23,7 @@ Package to load in icons from [MaterialDesignIcons](https://materialdesignicons.
 Icon.setup(getApplicationContext(), preloadNames, new SetupListener());
 ```
 
+## Useage ##
 - Set an icon onto an `ImageView` and tint it `Color.BLUE`
 ```java
 Icon.load(getBaseContext(), "freebsd", (icon) -> imageView.setImageDrawable(Icon.tint(icon, Color.BLUE)));
