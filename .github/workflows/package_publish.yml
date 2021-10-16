@@ -1,0 +1,57 @@
+name: Make a release on new version tag
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  package:
+    name: Release Icons Library
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      # get the version name from the pushed tag, strip put the preceding v
+      # this is used for the packages version_name
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION_NAME::${GITHUB_REF#refs/tags/v}
+
+      - name: Build package
+        run: bash ./gradlew :icons:build
+          
+      - name: Publish package
+        run: >- 
+          bash ./gradlew :icons:publish 
+          -Pgithub_user=${{ github.repository_owner }}
+          -Pgithub_key=${{ secrets.GITHUB_TOKEN }}
+          -Pversion_name=${{ steps.get_version.outputs.VERSION_NAME }}
+
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
+          draft: true
+          prerelease: false
+
+      - name: Upload package to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: icons/build/outputs/aar/icons-release.aar
+          asset_name: icons.aar
+          asset_content_type: application/aar
