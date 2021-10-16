@@ -7,6 +7,8 @@ import java.util.concurrent.TimeUnit;
  * A thin wrapper around a thread pool executor that only exposes partially what the executor is
  * doing. This is so that we don't make a mistake somewhere along the way and jack something up.
  *
+ * https://gist.github.com/warmwaffles/8534618
+ *
  * @author Matthew A. Johnston (warmwaffles)
  */
 public class Scheduler {

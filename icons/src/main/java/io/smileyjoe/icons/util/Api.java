@@ -19,6 +19,12 @@ public class Api {
     private static final String URL_ALL = "https://cdn.jsdelivr.net/npm/@mdi/svg@6.2.95/meta.json";
     private static final String URL_ICON = "https://materialdesignicons.com/api/icon/{id}";
 
+    /**
+     * Get all the icon meta data, this includes the name and id, not the path itself
+     *
+     * @param context context
+     * @param listener callback
+     */
     public static void getAll(Context context, MetaLoaded listener) {
         Ion.with(context)
                 .load(URL_ALL)
@@ -36,6 +42,13 @@ public class Api {
                 });
     }
 
+    /**
+     * Get the icon path
+     *
+     * @param context context
+     * @param id icon id
+     * @param listener callback
+     */
     public static void getIcon(Context context, String id, final IconLoaded listener) {
         Ion.with(context)
                 .load(URL_ICON.replace("{id}", id))

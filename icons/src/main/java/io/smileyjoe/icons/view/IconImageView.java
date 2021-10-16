@@ -19,6 +19,15 @@ import io.smileyjoe.icons.listener.IconViewListener;
 import io.smileyjoe.icons.util.IconLoader;
 import io.smileyjoe.icons.util.IconViewHelper;
 
+/**
+ * ImageView that takes custom attributes to load icons
+ * <br/>
+ * Attributes:
+ * - icon_name, name of the icon to load
+ * - icon_color, color resource id
+ * - icon_placeholder, drawable resource id for an animated vector, this isn't tinted by the icon_color
+ * - icon_missing, drawable resource id for an image to show if the icon isn't found
+ */
 public class IconImageView extends AppCompatImageView implements IconViewListener {
 
     private IconViewHelper mHelper;

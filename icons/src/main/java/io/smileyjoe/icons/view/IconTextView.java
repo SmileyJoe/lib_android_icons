@@ -13,6 +13,15 @@ import io.smileyjoe.icons.Icon;
 import io.smileyjoe.icons.listener.IconViewListener;
 import io.smileyjoe.icons.util.IconViewHelper;
 
+/**
+ * TextView that takes custom attributes to load an icon into the left drawable
+ * <br/>
+ * Attributes:
+ * - icon_name, name of the icon to load
+ * - icon_color, color resource id
+ * - icon_placeholder, drawable resource id for an animated vector, this isn't tinted by the icon_color
+ * - icon_missing, drawable resource id for an image to show if the icon isn't found
+ */
 public class IconTextView extends AppCompatTextView implements IconViewListener {
 
     private IconViewHelper mHelper;
@@ -40,16 +49,20 @@ public class IconTextView extends AppCompatTextView implements IconViewListener 
 
     @Override
     public void onIconLoaded(Drawable icon) {
-        setCompoundDrawablesWithIntrinsicBounds(Icon.tint(icon, mHelper.getColor(), true), null, null, null);
+        setLeftDrawable(Icon.tint(icon, mHelper.getColor(), true));
     }
 
     @Override
     public void showPlaceholder(AnimatedVectorDrawableCompat placeholder) {
-        setCompoundDrawablesWithIntrinsicBounds(placeholder, null, null, null);
+        setLeftDrawable(placeholder);
     }
 
     @Override
     public void showMissing(Drawable drawable) {
-        setCompoundDrawablesWithIntrinsicBounds(Icon.tint(drawable, mHelper.getColor(), true), null, null, null);
+        setLeftDrawable(Icon.tint(drawable, mHelper.getColor(), true));
+    }
+
+    private void setLeftDrawable(Drawable drawable){
+        setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
     }
 }

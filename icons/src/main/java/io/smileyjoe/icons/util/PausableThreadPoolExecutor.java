@@ -10,6 +10,8 @@ import java.util.concurrent.locks.ReentrantLock;
  * A light wrapper around the {@link ThreadPoolExecutor}. It allows for you to pause execution and
  * resume execution when ready. It is very handy for games that need to pause.
  *
+ * https://gist.github.com/warmwaffles/8534618
+ *
  * @author Matthew A. Johnston (warmwaffles)
  */
 public class PausableThreadPoolExecutor extends ThreadPoolExecutor {
