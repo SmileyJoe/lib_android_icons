@@ -8,28 +8,19 @@
     tools:context=".SecondActivity">
 
     <io.smileyjoe.icons.view.IconImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:icon_name="file-plus-outline"
-        app:icon_color="@color/colorPrimary"/>
+        style="@style/Icon.Small"
+        app:icon_name="file-plus-outline"/>
 
     <io.smileyjoe.icons.view.IconImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:icon_name="emoticon-poop"
-        app:icon_color="@color/colorPrimary"/>
+        style="@style/Icon.Small"
+        app:icon_name="emoticon-poop"/>
 
     <io.smileyjoe.icons.view.IconImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:icon_name="emoticon-poop"
-        app:icon_color="@color/colorPrimary"/>
+        style="@style/Icon.Small"
+        app:icon_name="emoticon-poop"/>
 
     <io.smileyjoe.icons.view.IconImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        app:icon_name="seat"
-        app:icon_color="@color/colorPrimary"
-        app:placeholder="@drawable/anim_loading"/>
+        style="@style/Icon.Large"
+        app:icon_name="seat"/>
 
 </LinearLayout>

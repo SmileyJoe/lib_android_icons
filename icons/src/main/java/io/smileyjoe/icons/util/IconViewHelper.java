@@ -8,18 +8,21 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+import androidx.core.content.ContextCompat;
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat;
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 
 import io.smileyjoe.icons.Icon;
 import io.smileyjoe.icons.R;
+import io.smileyjoe.icons.listener.IconLoaded;
 import io.smileyjoe.icons.listener.IconViewListener;
 
-public class IconViewHelper {
+public class IconViewHelper implements IconLoaded {
 
     private int mColor;
     private IconViewListener mListener;
     private View mView;
+    private int mIconMissingResId;
 
     public IconViewHelper(View view) {
         mView = view;
@@ -39,23 +42,32 @@ public class IconViewHelper {
 
             mColor = a.getColor(R.styleable.IconView_icon_color, Color.BLACK);
 
-            int placeholderResId = a.getResourceId(R.styleable.IconView_placeholder, 0);
-            if(placeholderResId != 0){
-                handlePlaceholder(placeholderResId);
-            }
-
-            String iconName = a.getString(R.styleable.IconView_icon_name);
-
-            if (!TextUtils.isEmpty(iconName)) {
-                load(iconName);
-            }
+            handlePlaceholder(a.getResourceId(R.styleable.IconView_icon_placeholder, 0));
+            mIconMissingResId = a.getResourceId(R.styleable.IconView_icon_missing, 0);
+            load(a.getString(R.styleable.IconView_icon_name));
 
             a.recycle();
         }
     }
 
+    private Drawable getMissing(){
+        if(mIconMissingResId != 0){
+            IconCache cache = IconCache.getInstance();
+            Drawable drawable = cache.get(mIconMissingResId);
+
+            if(drawable == null){
+                drawable = ContextCompat.getDrawable(mView.getContext(), mIconMissingResId);
+                cache.cache(mIconMissingResId, drawable);
+            }
+
+            return drawable;
+        } else {
+            return null;
+        }
+    }
+
     private void handlePlaceholder(int resId){
-        if(mListener != null) {
+        if(mListener != null && resId != 0) {
             IconCache cache = IconCache.getInstance();
             AnimatedVectorDrawableCompat animatedDrawable = (AnimatedVectorDrawableCompat) cache.get(resId);
             AnimatedVectorDrawableCompat placeholder;
@@ -65,6 +77,7 @@ public class IconViewHelper {
                 placeholder.clearAnimationCallbacks();
             } else {
                 placeholder = AnimatedVectorDrawableCompat.create(mView.getContext(), resId);
+                cache.cache(resId, placeholder);
             }
 
             placeholder.registerAnimationCallback(new Animatable2Compat.AnimationCallback() {
@@ -76,14 +89,28 @@ public class IconViewHelper {
                 }
             });
             placeholder.start();
-            IconCache.getInstance().cache(resId, placeholder);
             mListener.showPlaceholder(placeholder);
         }
     }
 
     public void load(String value) {
         if (!TextUtils.isEmpty(value)) {
-            Icon.load(mView.getContext(), value, mListener);
+            Icon.load(mView.getContext(), value, this);
+        }
+    }
+
+    @Override
+    public void onIconLoaded(Drawable icon) {
+        if(mListener != null){
+            if(icon != null){
+                mListener.onIconLoaded(icon);
+            } else {
+                Drawable missing = getMissing();
+
+                if(missing != null) {
+                    mListener.showMissing(missing);
+                }
+            }
         }
     }
 }

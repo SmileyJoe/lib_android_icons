@@ -47,4 +47,9 @@ public class IconTextView extends AppCompatTextView implements IconViewListener 
     public void showPlaceholder(AnimatedVectorDrawableCompat placeholder) {
         setCompoundDrawablesWithIntrinsicBounds(placeholder, null, null, null);
     }
+
+    @Override
+    public void showMissing(Drawable drawable) {
+        setCompoundDrawablesWithIntrinsicBounds(Icon.tint(drawable, mHelper.getColor(), true), null, null, null);
+    }
 }

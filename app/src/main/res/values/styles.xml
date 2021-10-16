@@ -7,4 +7,30 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Icon">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="icon_missing">@drawable/ic_broken</item>
+        <item name="icon_placeholder">@drawable/anim_loading</item>
+        <item name="icon_color">@color/colorPrimary</item>
+    </style>
+
+    <style name="Icon.Small">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
+
+    <style name="Icon.Large">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">150dp</item>
+    </style>
+
+    <style name="Icon.Small.Accent">
+        <item name="icon_color">@color/colorAccent</item>
+    </style>
+
+    <style name="Icon.Large.Accent">
+        <item name="icon_color">@color/colorAccent</item>
+    </style>
+
 </resources>

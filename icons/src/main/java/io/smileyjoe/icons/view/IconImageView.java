@@ -57,4 +57,9 @@ public class IconImageView extends AppCompatImageView implements IconViewListene
     public void showPlaceholder(AnimatedVectorDrawableCompat placeholder) {
         setImageDrawable(placeholder);
     }
+
+    @Override
+    public void showMissing(Drawable drawable) {
+        setImageDrawable(Icon.tint(drawable, mHelper.getColor(), true));
+    }
 }

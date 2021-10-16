@@ -20,62 +20,45 @@
 
     <ImageView
         android:id="@+id/image_icon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"/>
+        style="@style/Icon.Small"/>
 
     <io.smileyjoe.icons.view.IconImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:icon_name="emoticon-dead-outline"
-        app:icon_color="@color/colorPrimary"
-        app:placeholder="@drawable/anim_loading"/>
+        style="@style/Icon.Small"
+        app:icon_name="emoticon-dead-outline_doesnt_exist"/>
 
     <io.smileyjoe.icons.view.IconImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:icon_name="file-plus-outline"
-        app:icon_color="@color/colorPrimary"/>
+        style="@style/Icon.Small"
+        app:icon_name="file-plus-outline"/>
 
     <io.smileyjoe.icons.view.IconImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:icon_name="emoticon-poop"
-        app:icon_color="@color/colorPrimary"/>
+        style="@style/Icon.Small"
+        app:icon_name="emoticon-poop"/>
 
     <io.smileyjoe.icons.view.IconImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        app:icon_name="seat"
-        app:icon_color="@color/colorAccent"
-        app:placeholder="@drawable/anim_loading"/>
+        style="@style/Icon.Large.Accent"
+        app:icon_name="seat"/>
 
     <io.smileyjoe.icons.view.IconImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        app:icon_name="seat"
-        app:icon_color="@color/colorAccent"
-        app:placeholder="@drawable/anim_loading"/>
+        style="@style/Icon.Large.Accent"
+        app:icon_name="seat"/>
 
     <io.smileyjoe.icons.view.IconImageView
         android:id="@+id/icon_two"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:icon_color="@color/colorPrimary"/>
+        style="@style/Icon.Small"/>
 
     <io.smileyjoe.icons.view.IconTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/Icon"
         android:text="TESTING"
-        app:icon_name="eraser"
-        app:icon_color="@color/colorPrimary"
-        app:placeholder="@drawable/anim_loading"/>
+        app:icon_name="eraser"/>
 
     <io.smileyjoe.icons.view.IconTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/Icon"
         android:text="TESTING PART TWO"
         app:icon_name="ghost"
-        app:icon_color="@color/colorAccent"
-        app:placeholder="@drawable/anim_loading"/>
+        app:icon_color="@color/colorAccent"/>
 
 </LinearLayout>

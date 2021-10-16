@@ -67,7 +67,9 @@ public class IconLoader implements Runnable {
 
         if(!namesToLoad.isEmpty()) {
             mNames = namesToLoad;
-            mMainExecutor = ContextCompat.getMainExecutor(mContext);
+            if(mListener != null) {
+                mMainExecutor = ContextCompat.getMainExecutor(mContext);
+            }
             Scheduler.getInstance().schedule(this);
         }
     }
@@ -76,18 +78,22 @@ public class IconLoader implements Runnable {
     public void run() {
         List<IconData> icons = Database.getIconData().findByNames(mNames);
 
-        for(IconData data: icons) {
-            if(mMainExecutor != null) {
-                if (data != null && !TextUtils.isEmpty(data.getPath())) {
-                    mMainExecutor.execute(new ReturnToUi(Icon.fromPath(mContext, data)));
-                } else if (data != null && !TextUtils.isEmpty(data.getId())) {
-                    Api.getIcon(mContext, data.getId(), icon -> mMainExecutor.execute(new ReturnToUi(icon)));
-                } else {
-                    // TODO: Something //
+        if(icons != null && icons.size() > 0) {
+            for (IconData data : icons) {
+                if (mMainExecutor != null) {
+                    if (data != null && !TextUtils.isEmpty(data.getPath())) {
+                        mMainExecutor.execute(new ReturnToUi(Icon.fromPath(mContext, data)));
+                    } else if (data != null && !TextUtils.isEmpty(data.getId())) {
+                        Api.getIcon(mContext, data.getId(), icon -> mMainExecutor.execute(new ReturnToUi(icon)));
+                    } else {
+                        mMainExecutor.execute(new ReturnToUi(null));
+                    }
+                } else if (data != null && TextUtils.isEmpty(data.getPath())) {
+                    Api.getIcon(mContext, data.getId(), null);
                 }
-            } else {
-                Api.getIcon(mContext, data.getId(), null);
             }
+        } else {
+            mMainExecutor.execute(new ReturnToUi(null));
         }
     }
 

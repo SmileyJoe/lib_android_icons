@@ -3,6 +3,7 @@
     <declare-styleable name="IconView">
         <attr name="icon_name" format="string" />
         <attr name="icon_color" format="reference"/>
-        <attr name="placeholder" format="reference"/>
+        <attr name="icon_placeholder" format="reference"/>
+        <attr name="icon_missing" format="reference"/>
     </declare-styleable>
 </resources>
