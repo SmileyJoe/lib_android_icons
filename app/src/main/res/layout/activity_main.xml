@@ -54,11 +54,9 @@
         app:icon_name="eraser"/>
 
     <io.smileyjoe.icons.view.IconTextView
+        android:id="@+id/icon_text_two"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Icon"
-        android:text="TESTING PART TWO"
-        app:icon_name="ghost"
-        app:icon_color="@color/colorAccent"/>
+        style="@style/Icon"/>
 
 </LinearLayout>

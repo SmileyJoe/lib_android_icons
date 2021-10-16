@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.ColorRes;
 import androidx.core.content.ContextCompat;
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat;
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
@@ -33,9 +34,11 @@ public class IconViewHelper implements IconLoaded {
     // view the helper is being used in
     private View mView;
     private int mIconMissingResId;
+    private boolean mIsLoaded;
 
     public IconViewHelper(View view) {
         mView = view;
+        mIsLoaded = false;
     }
 
     /**
@@ -61,7 +64,7 @@ public class IconViewHelper implements IconLoaded {
         if (attrs != null) {
             TypedArray a = mView.getContext().obtainStyledAttributes(attrs, R.styleable.IconView, defStyle, 0);
 
-            mColor = a.getColor(R.styleable.IconView_icon_color, Color.BLACK);
+            setColor(a.getColor(R.styleable.IconView_icon_color, Color.BLACK));
 
             handlePlaceholder(a.getResourceId(R.styleable.IconView_icon_placeholder, 0));
             // we only need to use this if the icon is missing, so don't process it now
@@ -70,6 +73,30 @@ public class IconViewHelper implements IconLoaded {
 
             a.recycle();
         }
+    }
+
+    public void setColorResId(@ColorRes int color){
+        setColor(ContextCompat.getColor(mView.getContext(), color));
+    }
+
+    public void setColor(String hex){
+        setColor(Color.parseColor(hex));
+    }
+
+    /**
+     * Sets the color to tint the icons
+     * <br/>
+     * This is the already converted color, see {@link #setColor(String)} and {@link #setColorResId(int)}
+     * for other options
+     *
+     * @param color converted color for icon tint
+     */
+    public void setColor(int color){
+        mColor = color;
+    }
+
+    public boolean isLoaded() {
+        return mIsLoaded;
     }
 
     private Drawable getMissing(){
@@ -127,6 +154,7 @@ public class IconViewHelper implements IconLoaded {
         if(mListener != null){
             if(icon != null){
                 mListener.onIconLoaded(icon);
+                mIsLoaded = true;
             } else {
                 Drawable missing = getMissing();
 

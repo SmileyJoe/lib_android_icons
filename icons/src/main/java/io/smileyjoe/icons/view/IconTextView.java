@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
+import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -45,6 +46,33 @@ public class IconTextView extends AppCompatTextView implements IconViewListener 
         mHelper = new IconViewHelper(this);
         mHelper.setListener(this);
         mHelper.load(attrs, defStyle);
+    }
+
+    public void setTint(@ColorRes int color){
+        mHelper.setColorResId(color);
+        applyTint();
+    }
+
+    public void setTint(String hex){
+        mHelper.setColor(hex);
+        applyTint();
+    }
+
+    public void setIcon(String name) {
+        mHelper.load(name);
+    }
+
+    /**
+     * Apply the tint if the left drawable is already set
+     */
+    private void applyTint(){
+        if(mHelper.isLoaded()) {
+            Drawable[] drawables = getCompoundDrawables();
+
+            if (drawables != null && drawables[0] != null) {
+                Icon.tint(drawables[0], mHelper.getColor());
+            }
+        }
     }
 
     @Override

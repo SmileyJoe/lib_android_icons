@@ -22,10 +22,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(root);
 
         mBinding.buttonSecond.setOnClickListener((view) -> startActivity(SecondActivity.getIntent(getBaseContext())));
+        mBinding.iconTwo.setTint("#00FF00");
         mBinding.iconTwo.setIcon("format-text-rotation-up");
 
         Icon.load(getBaseContext(), "freebsd", (icon) -> mBinding.imageIcon.setImageDrawable(Icon.tint(icon, Color.BLUE)));
 
         Icon.load(getBaseContext(), "fridge", "format-size", "golf", "ghost");
+
+        mBinding.iconTextTwo.setText("Set in code");
+        mBinding.iconTextTwo.setIcon("heart-broken");
+        mBinding.iconTextTwo.setTint("#FF0000");
     }
 }

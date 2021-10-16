@@ -5,6 +5,7 @@ import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
+import androidx.annotation.ColorRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.content.ContextCompat;
@@ -53,8 +54,27 @@ public class IconImageView extends AppCompatImageView implements IconViewListene
         mHelper.load(attrs, defStyle);
     }
 
+    public void setTint(@ColorRes int color){
+        mHelper.setColorResId(color);
+        applyTint();
+    }
+
+    public void setTint(String hex){
+        mHelper.setColor(hex);
+        applyTint();
+    }
+
     public void setIcon(String name) {
         mHelper.load(name);
+    }
+
+    /**
+     * Apply the tint if the drawable is already set
+     */
+    private void applyTint(){
+        if(mHelper.isLoaded() && getDrawable() != null){
+            Icon.tint(getDrawable(), mHelper.getColor());
+        }
     }
 
     @Override
