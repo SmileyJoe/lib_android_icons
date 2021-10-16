@@ -42,6 +42,13 @@ import io.smileyjoe.icons.util.VectorDrawableCreator;
 public class Icon {
 
     /**
+     * Convenience method for {@link #setup(Context, ArrayList, SetupListener) setup(applicationContext, null, null)}
+     */
+    public static void setup(Context applicationContext){
+        setup(applicationContext, null, null);
+    }
+
+    /**
      * Sets up everything, this needs to be called in the application class.
      * 
      * @param applicationContext context

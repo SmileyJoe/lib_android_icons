@@ -106,12 +106,14 @@ public class Database {
                 Api.getAll(mApplicationContext, () -> {
                     // check if the meta data was inserted correctly
                     if (getRowCount(db) > 0) {
-                        // get the meta data for the icons we want to preload
-                        List<IconData> icons = sAppDatabase.iconDataDao().findByNames(mPreloadNames);
+                        if(mPreloadNames != null && mPreloadNames.size() > 0) {
+                            // get the meta data for the icons we want to preload
+                            List<IconData> icons = sAppDatabase.iconDataDao().findByNames(mPreloadNames);
 
-                        for (IconData icon : icons) {
-                            // get and save the icon path data to the db
-                            Api.getIcon(mApplicationContext, icon.getId(), null);
+                            for (IconData icon : icons) {
+                                // get and save the icon path data to the db
+                                Api.getIcon(mApplicationContext, icon.getId(), null);
+                            }
                         }
 
                         if (mListener != null) {

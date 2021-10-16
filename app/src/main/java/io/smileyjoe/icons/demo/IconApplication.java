@@ -14,23 +14,6 @@ public class IconApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        ArrayList<String> preloadNames = new ArrayList<>();
-
-        preloadNames.add("emoticon-wink");
-        preloadNames.add("emoticon-tongue-outline");
-        preloadNames.add("engine-outline");
-        preloadNames.add("eraser");
-
-        Icon.setup(getApplicationContext(), preloadNames, new SetupListener() {
-            @Override
-            public void setupComplete() {
-                Log.d("IconThings", "SetupComplete");
-            }
-
-            @Override
-            public void setupFailed() {
-                Log.e("IconThings", "SetupFailed");
-            }
-        });
+        Icon.setup(getApplicationContext());
     }
 }
