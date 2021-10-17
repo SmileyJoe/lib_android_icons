@@ -35,6 +35,7 @@ public class IconViewHelper implements IconLoaded {
     private View mView;
     private int mIconMissingResId;
     private boolean mIsLoaded;
+    private int mPlaceholderResId;
 
     public IconViewHelper(View view) {
         mView = view;
@@ -73,6 +74,13 @@ public class IconViewHelper implements IconLoaded {
 
             a.recycle();
         }
+    }
+
+    /**
+     * Reset the view, load the placeholder again if applicable
+     */
+    public void reset(){
+        handlePlaceholder(mPlaceholderResId);
     }
 
     public void setColorResId(@ColorRes int color){
@@ -118,6 +126,7 @@ public class IconViewHelper implements IconLoaded {
     private void handlePlaceholder(int resId){
         // if there is no listener, there is nothing to do with the placeholder, so do nothing
         if(mListener != null && resId != 0) {
+            mPlaceholderResId = resId;
             IconCache cache = IconCache.getInstance();
             AnimatedVectorDrawableCompat placeholder = (AnimatedVectorDrawableCompat) cache.get(resId);
 

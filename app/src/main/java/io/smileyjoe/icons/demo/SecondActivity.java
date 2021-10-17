@@ -23,7 +23,12 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         mBinding = ActivitySecondBinding.inflate(getLayoutInflater());
-        View view = mBinding.getRoot();
-        setContentView(view);
+        View root = mBinding.getRoot();
+        setContentView(root);
+
+        mBinding.buttonReset.setOnClickListener((view) -> {
+            mBinding.iconOne.reset();
+            mBinding.textOne.reset();
+        });
     }
 }

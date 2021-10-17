@@ -77,6 +77,14 @@ public class IconImageView extends AppCompatImageView implements IconViewListene
         }
     }
 
+    /**
+     * Reset the icon, this is helpful for lists
+     */
+    public void reset(){
+        setImageDrawable(null);
+        mHelper.reset();
+    }
+
     @Override
     public void onIconLoaded(Drawable icon) {
         setImageDrawable(Icon.tint(icon, mHelper.getColor(), true));

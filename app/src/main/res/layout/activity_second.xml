@@ -7,8 +7,22 @@
     android:orientation="vertical"
     tools:context=".SecondActivity">
 
+    <Button
+        android:id="@+id/button_reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reset"/>
+
     <io.smileyjoe.icons.view.IconImageView
+        android:id="@+id/icon_one"
         style="@style/Icon.Small"
+        app:icon_name="file-plus-outline"/>
+
+    <io.smileyjoe.icons.view.IconTextView
+        android:id="@+id/text_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Icon"
         app:icon_name="file-plus-outline"/>
 
     <io.smileyjoe.icons.view.IconImageView

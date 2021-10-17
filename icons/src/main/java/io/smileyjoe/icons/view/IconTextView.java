@@ -75,6 +75,14 @@ public class IconTextView extends AppCompatTextView implements IconViewListener 
         }
     }
 
+    /**
+     * Reset the icon, this is helpful for lists
+     */
+    public void reset(){
+        setLeftDrawable(null);
+        mHelper.reset();
+    }
+
     @Override
     public void onIconLoaded(Drawable icon) {
         setLeftDrawable(Icon.tint(icon, mHelper.getColor(), true));
