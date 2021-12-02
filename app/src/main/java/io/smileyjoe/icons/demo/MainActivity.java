@@ -32,5 +32,9 @@ public class MainActivity extends AppCompatActivity {
         mBinding.iconTextTwo.setText("Set in code");
         mBinding.iconTextTwo.setIcon("heart-broken");
         mBinding.iconTextTwo.setTint("#FF0000");
+
+        mBinding.imageEmpty.setMissing(R.drawable.ic_broken);
+        mBinding.imageEmpty.setPlaceholder(R.drawable.anim_loading);
+        mBinding.imageEmpty.setIcon("apple");
     }
 }

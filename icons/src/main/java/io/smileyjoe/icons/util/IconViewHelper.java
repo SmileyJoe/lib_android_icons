@@ -67,13 +67,21 @@ public class IconViewHelper implements IconLoaded {
 
             setColor(a.getColor(R.styleable.IconView_icon_color, Color.BLACK));
 
-            handlePlaceholder(a.getResourceId(R.styleable.IconView_icon_placeholder, 0));
+            setPlaceholderResId(a.getResourceId(R.styleable.IconView_icon_placeholder, 0));
             // we only need to use this if the icon is missing, so don't process it now
-            mIconMissingResId = a.getResourceId(R.styleable.IconView_icon_missing, 0);
+            setIconMissingResId(a.getResourceId(R.styleable.IconView_icon_missing, 0));
             load(a.getString(R.styleable.IconView_icon_name));
 
             a.recycle();
         }
+    }
+
+    public void setIconMissingResId(int iconMissingResId){
+        mIconMissingResId = iconMissingResId;
+    }
+
+    public void setPlaceholderResId(int placeholderResId){
+        handlePlaceholder(placeholderResId);
     }
 
     /**

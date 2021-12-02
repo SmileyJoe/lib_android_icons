@@ -23,6 +23,11 @@
         style="@style/Icon.Small"/>
 
     <io.smileyjoe.icons.view.IconImageView
+        android:id="@+id/image_empty"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
+    <io.smileyjoe.icons.view.IconImageView
         style="@style/Icon.Small"
         app:icon_name="emoticon-dead-outline_doesnt_exist"/>
 

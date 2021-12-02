@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
 import androidx.annotation.ColorRes;
+import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.content.ContextCompat;
@@ -57,6 +58,14 @@ public class IconImageView extends AppCompatImageView implements IconViewListene
     public void setTint(@ColorRes int color){
         mHelper.setColorResId(color);
         applyTint();
+    }
+
+    public void setMissing(int drawableResId){
+        mHelper.setIconMissingResId(drawableResId);
+    }
+
+    public void setPlaceholder(int drawableRedId){
+        mHelper.setPlaceholderResId(drawableRedId);
     }
 
     public void setTint(String hex){
