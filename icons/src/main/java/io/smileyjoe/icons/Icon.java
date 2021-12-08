@@ -115,10 +115,12 @@ public class Icon {
      * @return tinted drawable
      */
     public static Drawable tint(Drawable drawable, int color){
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
-            drawable.setTint(color);
-        } else {
-            DrawableCompat.setTint(drawable, color);
+        if(drawable != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                drawable.setTint(color);
+            } else {
+                DrawableCompat.setTint(drawable, color);
+            }
         }
 
         return drawable;

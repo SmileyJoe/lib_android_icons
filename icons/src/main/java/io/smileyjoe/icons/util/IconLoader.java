@@ -3,6 +3,7 @@ package io.smileyjoe.icons.util;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
+import android.util.Log;
 
 import androidx.core.content.ContextCompat;
 
@@ -131,7 +132,9 @@ public class IconLoader implements Runnable {
             }
         } else {
             // the icon names aren't in the db, so we have no way to get them
-            mMainExecutor.execute(new ReturnToUi(null));
+            if(mMainExecutor != null) {
+                mMainExecutor.execute(new ReturnToUi(null));
+            }
         }
     }
 
