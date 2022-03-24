@@ -58,10 +58,14 @@ public class Api {
                 .setCallback((exception, icon) -> {
                     if(icon != null) {
                         Database.getIconData().insert(icon);
-                    }
 
-                    if (listener != null) {
-                        listener.onIconLoaded(Icon.fromPath(context, icon));
+                        if (listener != null) {
+                            listener.onIconLoaded(Icon.fromPath(context, icon));
+                        }
+                    } else {
+                        if(listener != null){
+                            listener.onIconLoaded(null);
+                        }
                     }
                 });
     }

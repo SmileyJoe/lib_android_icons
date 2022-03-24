@@ -27,6 +27,10 @@
 
     <io.smileyjoe.icons.view.IconImageView
         style="@style/Icon.Small"
+        app:icon_name="access-point"/>
+
+    <io.smileyjoe.icons.view.IconImageView
+        style="@style/Icon.Small"
         app:icon_name="emoticon-poop"/>
 
     <io.smileyjoe.icons.view.IconImageView
