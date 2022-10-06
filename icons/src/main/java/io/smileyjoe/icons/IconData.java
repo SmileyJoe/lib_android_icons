@@ -1,5 +1,7 @@
 package io.smileyjoe.icons;
 
+import android.text.TextUtils;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -44,6 +46,17 @@ public class IconData {
 
     public String getPath() {
         return mPath;
+    }
+
+    /**
+     * Check if the icon is valid.
+     * <p/>
+     * A valid icon has an id and a path.
+     *
+     * @return whether the icon data is valid or not
+     */
+    public boolean isValid(){
+        return !TextUtils.isEmpty(mId) && !TextUtils.isEmpty(mPath);
     }
 
     @Override

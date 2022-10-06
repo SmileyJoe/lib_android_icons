@@ -56,7 +56,7 @@ public class Api {
                 .as(new TypeToken<IconData>() {
                 })
                 .setCallback((exception, icon) -> {
-                    if(icon != null) {
+                    if(icon != null && icon.isValid()) {
                         Database.getIconData().insert(icon);
 
                         if (listener != null) {
