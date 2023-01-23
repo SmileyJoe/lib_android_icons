@@ -112,7 +112,7 @@ public class Database {
 
                             for (IconData icon : icons) {
                                 // get and save the icon path data to the db
-                                Api.getIcon(mApplicationContext, icon.getId(), null);
+                                Api.getIcon(mApplicationContext, icon, null);
                             }
                         }
 

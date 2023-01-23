@@ -1,11 +1,16 @@
 package io.smileyjoe.icons.util;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.google.gson.reflect.TypeToken;
 import com.koushikdutta.ion.Ion;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
+
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.List;
 
 import io.smileyjoe.icons.Icon;
@@ -16,8 +21,9 @@ import io.smileyjoe.icons.listener.MetaLoaded;
 
 public class Api {
 
-    private static final String URL_ALL = "https://cdn.jsdelivr.net/npm/@mdi/svg@6.2.95/meta.json";
-    private static final String URL_ICON = "https://materialdesignicons.com/api/icon/{id}";
+    private static final String VERSION_NUMBER = "7.1.96";
+    private static final String URL_ALL = "https://cdn.jsdelivr.net/npm/@mdi/svg@{version}/meta.json".replace("{version}", VERSION_NUMBER);
+    private static final String URL_ICON = "https://cdn.jsdelivr.net/npm/@mdi/svg@{version}/svg/{name}.svg".replace("{version}", VERSION_NUMBER);
 
     /**
      * Get all the icon meta data, this includes the name and id, not the path itself
@@ -49,13 +55,14 @@ public class Api {
      * @param id icon id
      * @param listener callback
      */
-    public static void getIcon(Context context, String id, final IconLoaded listener) {
+    public static void getIcon(Context context, IconData icon, final IconLoaded listener) {
         Ion.with(context)
-                .load(URL_ICON.replace("{id}", id))
+                .load(URL_ICON.replace("{name}", icon.getName()))
                 .setHandler(null)
-                .as(new TypeToken<IconData>() {
-                })
-                .setCallback((exception, icon) -> {
+                .asString()
+                .setCallback((exception, svgString) -> {
+                    String path = getPathFromSvg(svgString);
+                    icon.setPath(path);
                     if(icon != null && icon.isValid()) {
                         Database.getIconData().insert(icon);
 
@@ -68,5 +75,31 @@ public class Api {
                         }
                     }
                 });
+    }
+
+    /**
+     * Get the path from the svg response
+     *
+     * @param svgString svg from cdn
+     * @return path from svg
+     */
+    private static String getPathFromSvg(String svgString){
+        try {
+            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+            factory.setNamespaceAware(true);
+            XmlPullParser xpp = factory.newPullParser();
+
+            xpp.setInput( new StringReader( svgString) ); // pass input whatever xml you have
+            int eventType = xpp.getEventType();
+            while (eventType != XmlPullParser.END_DOCUMENT) {
+                if(eventType == XmlPullParser.START_TAG && xpp.getName().equals("path")) {
+                    return xpp.getAttributeValue(null, "d");
+                }
+                eventType = xpp.next();
+            }
+        } catch (XmlPullParserException | IOException e) {
+        }
+
+        return null;
     }
 }

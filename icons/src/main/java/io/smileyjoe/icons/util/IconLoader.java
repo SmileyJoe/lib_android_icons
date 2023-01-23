@@ -118,7 +118,7 @@ public class IconLoader implements Runnable {
                         mMainExecutor.execute(new ReturnToUi(Icon.fromPath(mContext, data)));
                     } else if (data != null && !TextUtils.isEmpty(data.getId())) {
                         // the icon is in the db, but has no path, so get it from the api, then send it back to the ui thread
-                        Api.getIcon(mContext, data.getId(), icon -> mMainExecutor.execute(new ReturnToUi(icon)));
+                        Api.getIcon(mContext, data, icon -> mMainExecutor.execute(new ReturnToUi(icon)));
                     } else {
                         // something isn't right, just return null
                         mMainExecutor.execute(new ReturnToUi(null));
@@ -127,7 +127,7 @@ public class IconLoader implements Runnable {
                     // if nothing is being returned, the only thing to do is load in any images
                     // that are requested but have no path.
                     // We don't need to check for errors or validity
-                    Api.getIcon(mContext, data.getId(), null);
+                    Api.getIcon(mContext, data, null);
                 }
             }
         } else {
