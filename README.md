@@ -1,6 +1,6 @@
 # Material Design Icons #
 
-Package to load in icons from [MaterialDesignIcons](https://materialdesignicons.com/) in android
+Package to load in icons from [Pictogrammers](https://pictogrammers.com/) in android
 
 ## Features ##
 

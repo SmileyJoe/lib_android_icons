@@ -147,7 +147,7 @@ public class Icon {
         List<VectorDrawableCreator.PathData> pathList = Arrays.asList(
                 new VectorDrawableCreator.PathData(icon.getPath(), color));
 
-        // all the icons from materialdesign icons are 24,24,24,24, so we can hard code
+        // all the icons from pictogrammers icons are 24,24,24,24, so we can hard code
         // it to that
         Drawable drawable = VectorDrawableCreator.getVectorDrawable(
                 context,
