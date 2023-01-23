@@ -1,7 +1,6 @@
 package io.smileyjoe.icons.util;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.google.gson.reflect.TypeToken;
 import com.koushikdutta.ion.Ion;
@@ -57,10 +56,8 @@ public class Api {
      * @param listener callback
      */
     public static void getIcon(Context context, IconData icon, final IconLoaded listener) {
-        String url = URL_ICON.replace("{name}", icon.getName());
-        Log.d("IconThings", "Url: " + url);
         Ion.with(context)
-                .load(url)
+                .load(URL_ICON.replace("{name}", icon.getName()))
                 .setHandler(null)
                 .asString()
                 .setCallback((exception, svgString) -> {
