@@ -79,7 +79,7 @@ public class IconLoader implements Runnable {
      */
     public void load() {
         ArrayList<String> namesToLoad = new ArrayList<>();
-        IconCache cache = IconCache.getInstance();
+        IconCache cache = IconCache.INSTANCE;
 
         // go through the names, return any cached images immediately, add none cached icons to load
         for (String name : mNames) {

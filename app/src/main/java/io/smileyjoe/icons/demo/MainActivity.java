@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import io.smileyjoe.icons.Icon;
 import io.smileyjoe.icons.demo.databinding.ActivityMainBinding;
+import io.smileyjoe.icons.extensions.DrawableExt;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +26,10 @@ public class MainActivity extends AppCompatActivity {
         mBinding.iconTwo.setTint("#00FF00");
         mBinding.iconTwo.setIcon("format-text-rotation-up");
 
-        Icon.load(getBaseContext(), "freebsd", (icon) -> mBinding.imageIcon.setImageDrawable(Icon.tint(icon, Color.BLUE)));
+        Icon.load(getBaseContext(), "freebsd", (icon) -> {
+            DrawableExt.tint(icon, Color.BLUE);
+            mBinding.imageIcon.setImageDrawable(icon);
+        });
 
         Icon.load(getBaseContext(), "fridge", "format-size", "golf", "ghost");
 
