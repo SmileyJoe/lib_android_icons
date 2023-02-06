@@ -1,6 +1,7 @@
 package io.smileyjoe.icons.util;
 
 import android.content.Context;
+import android.text.TextUtils;
 
 import com.google.gson.reflect.TypeToken;
 import com.koushikdutta.ion.Ion;
@@ -52,7 +53,7 @@ public class Api {
      * Get the icon path
      *
      * @param context context
-     * @param id icon id
+     * @param icon icon data object
      * @param listener callback
      */
     public static void getIcon(Context context, IconData icon, final IconLoaded listener) {
@@ -61,16 +62,21 @@ public class Api {
                 .setHandler(null)
                 .asString()
                 .setCallback((exception, svgString) -> {
-                    String path = getPathFromSvg(svgString);
-                    icon.setPath(path);
-                    if(icon != null && icon.isValid()) {
+
+                    // There is no error and we have a response //
+                    if(exception == null && !TextUtils.isEmpty(svgString)) {
+                        String path = getPathFromSvg(svgString);
+                        icon.setPath(path);
+                    }
+
+                    if (icon != null && icon.isValid()) {
                         Database.getIconData().insert(icon);
 
                         if (listener != null) {
                             listener.onIconLoaded(Icon.fromPath(context, icon));
                         }
                     } else {
-                        if(listener != null){
+                        if (listener != null) {
                             listener.onIconLoaded(null);
                         }
                     }
@@ -89,7 +95,7 @@ public class Api {
             factory.setNamespaceAware(true);
             XmlPullParser xpp = factory.newPullParser();
 
-            xpp.setInput( new StringReader( svgString) ); // pass input whatever xml you have
+            xpp.setInput(new StringReader(svgString));
             int eventType = xpp.getEventType();
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 if(eventType == XmlPullParser.START_TAG && xpp.getName().equals("path")) {
@@ -97,7 +103,7 @@ public class Api {
                 }
                 eventType = xpp.next();
             }
-        } catch (XmlPullParserException | IOException e) {
+        } catch (XmlPullParserException | IOException | NullPointerException e) {
         }
 
         return null;
